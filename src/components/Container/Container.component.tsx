@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import { Children } from "../../@types/children";
+import { Children } from "../../@types/Children";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../config/theme/colors";
 import * as S from "./Container.styled";

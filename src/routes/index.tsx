@@ -5,6 +5,7 @@ import { ListAllScreen } from "../screens/ListAll/ListAll.screen";
 import { FavoriteScreen } from "../screens/Favorite/Favorite.screen";
 import { colors } from "../config/theme/colors";
 import { FontAwesome } from "@expo/vector-icons";
+import { UserStack } from "./userStack.routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +47,7 @@ export function Routes() {
           },
         }}
       >
-        <Tab.Screen name="ListAll" component={ListAllScreen} />
+        <Tab.Screen name="ListAll" component={UserStack} />
         <Tab.Screen name="Favorite" component={FavoriteScreen} />
       </Tab.Navigator>
     </NavigationContainer>

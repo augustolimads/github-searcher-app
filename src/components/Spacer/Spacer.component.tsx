@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Children } from "../../@types/children";
+import { Children } from "../../@types/Children";
 
 interface SpacerProps {
   size?: number;
@@ -13,10 +13,10 @@ interface SpacerProps {
 
 const SpacerStyle = styled.View<SpacerProps>`
   margin: ${({ marginResult }) => marginResult};
-  flex: ${({ flex }) => (flex ? flex : 0)};
+  flex: ${({ flex }) => (flex ? flex : "none")};
 `;
 
-export default function Spacer({
+export function Spacer({
   size,
   horizontal,
   vertical,

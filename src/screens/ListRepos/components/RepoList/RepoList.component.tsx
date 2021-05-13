@@ -1,26 +1,19 @@
 import React from "react";
 import { FlatList } from "react-native";
-import { User } from "../../../../@types/User";
 import { Flex } from "../../../../components/Flex/Flex.component";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import { Title } from "../../../../components/Title/Title.component";
-import { UserCard } from "../../../../components/UserCard/UserCard.component";
+import RepoCard from "../RepoCard/RepoCard.component";
 
-interface UserList {
-  users: User[];
-}
-
-export default function UserList({ users }: UserList) {
+export function RepoList({ userRepos }) {
   return (
     <Flex>
-      <Title>Usuários encontrados</Title>
-      <Spacer vertical size={8} />
       <FlatList
-        data={users}
+        data={userRepos}
         keyExtractor={(item) => String(item.id)}
-        renderItem={(userData) => (
+        renderItem={(repo) => (
           <Spacer vertical size={8}>
-            <UserCard userData={userData.item} />
+            <RepoCard repo={repo.item} />
           </Spacer>
         )}
       />

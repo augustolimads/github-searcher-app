@@ -4,7 +4,13 @@ import { RectButton } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../config/theme/colors";
-import Spacer from "../Spacer/Spacer.component";
+import { Spacer } from "../Spacer/Spacer.component";
+
+interface SearchProps {
+  value: string;
+  setValue: any;
+  handleSubmit: any;
+}
 
 const SearchWrapper = styled(View)`
   flex-direction: row;
@@ -26,12 +32,16 @@ const ButtonSearch = styled(RectButton)`
   align-items: center;
 `;
 
-export function Search() {
+export function Search({ value, setValue, handleSubmit }: SearchProps) {
   return (
     <SearchWrapper>
-      <Input placeholder="Buscar usuário" />
+      <Input
+        placeholder="Buscar usuário"
+        value={value}
+        onChangeText={setValue}
+      />
       <Spacer size={4} />
-      <ButtonSearch>
+      <ButtonSearch onPress={handleSubmit}>
         <FontAwesome name="search" size={28} color={colors.background} />
       </ButtonSearch>
     </SearchWrapper>
