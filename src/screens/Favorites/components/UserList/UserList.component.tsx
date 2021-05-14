@@ -1,8 +1,7 @@
 import React from "react";
-import { Flex } from "../../../../components/Flex/Flex.component";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
-import { Title } from "../../../../components/Title/Title.component";
-import { UserCard } from "../../../../components/UserCard/UserCard.component";
+import { Flex } from "components/Flex/Flex.component";
+import { Spacer } from "components/Spacer/Spacer.component";
+import { UserCard } from "components/UserCard/UserCard.component";
 
 export function UserList() {
   return (

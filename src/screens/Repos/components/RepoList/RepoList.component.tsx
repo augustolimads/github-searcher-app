@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList } from "react-native";
-import { Flex } from "../../../../components/Flex/Flex.component";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { Flex } from "components/Flex/Flex.component";
+import { Spacer } from "components/Spacer/Spacer.component";
 import RepoCard from "../RepoCard/RepoCard.component";
 
 export function RepoList({ userRepos }) {

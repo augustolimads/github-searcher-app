@@ -1,8 +1,8 @@
 import React from "react";
-import { Alert, Platform, Keyboard } from "react-native";
-import { Children } from "../../@types/Children";
+import { Platform, Keyboard } from "react-native";
+import { Children } from "@types/Children";
 import { FontAwesome } from "@expo/vector-icons";
-import { colors } from "../../theme/colors";
+import { colors } from "theme/colors";
 import * as S from "./Container.styled";
 
 type ContainerProps = {
