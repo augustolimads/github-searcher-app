@@ -2,28 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Container } from "../../components/Container/Container.component";
 import { Title } from "../../components/Title/Title.component";
 import { FontAwesome } from "@expo/vector-icons";
-import styled from "styled-components/native";
 import { Flex } from "../../components/Flex/Flex.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { RepoList } from "./components/RepoList/RepoList.component";
 import { useRoute } from "@react-navigation/core";
 import axios from "axios";
 import { repoRequest } from "../../service/repoRequest.service";
-
-const Header = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const FavoriteButton = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.darkGray};
-  padding: 8px;
-  padding-top: 10px;
-  border-radius: 24px;
-  justify-content: center;
-  align-items: center;
-`;
+import * as S from "./Repos.styled";
 
 export function ReposScreen() {
   const routes = useRoute();
@@ -57,12 +42,12 @@ export function ReposScreen() {
 
   return (
     <Container>
-      <Header>
+      <S.Header>
         <Title>{favoriteText}</Title>
-        <FavoriteButton>
+        <S.FavoriteButton>
           <FontAwesome name="heart" color={favoriteColor} size={24} />
-        </FavoriteButton>
-      </Header>
+        </S.FavoriteButton>
+      </S.Header>
       <Flex>
         <Spacer vertical size={12} />
         <RepoList userRepos={userRepos} />
