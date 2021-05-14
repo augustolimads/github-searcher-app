@@ -20,7 +20,7 @@ export function UserCard({ userData, deleteCard }: CardProps) {
   function viewRepos() {
     navigation.navigate("Repos", {
       reposUrl: userData.repos,
-      username: userData.username,
+      userData,
     });
   }
 

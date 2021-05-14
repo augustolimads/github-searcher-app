@@ -1,8 +1,8 @@
 import React from "react";
 import { Image } from "react-native";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { Spacer } from "../Spacer/Spacer.component";
 import * as S from "./EmptyList.styled";
-import emptyListImg from "../../../../assets/img/Octocat.png";
+import emptyListImg from "../../assets/img/Octocat.png";
 
 export function EmptyList() {
   return (

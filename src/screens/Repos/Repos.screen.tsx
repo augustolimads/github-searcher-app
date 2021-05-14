@@ -9,17 +9,24 @@ import { useRoute } from "@react-navigation/core";
 import axios from "axios";
 import { repoRequest } from "../../service/repoRequest.service";
 import * as S from "./Repos.styled";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { User } from "../../@types/User";
+import * as R from "ramda";
+import { Alert } from "react-native";
 
 export function ReposScreen() {
   const routes = useRoute();
-  const { reposUrl, username } = routes.params;
+  const { reposUrl, userData } = routes.params;
   const [userRepos, setUserRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const favorited = false;
+  const [userStorage, setUserStorage] = useState([{}]);
 
   const favoriteColor = favorited ? "red" : "gray";
 
-  const favoriteText = !favorited ? `Favoritar ${username} ?` : username;
+  const favoriteText = !favorited
+    ? `Favoritar ${userData.username} ?`
+    : userData.username;
 
   async function getRepos() {
     setLoading(true);
@@ -36,6 +43,27 @@ export function ReposScreen() {
     }
   }
 
+  async function saveAsyncStorage() {
+    try {
+      console.log("btn clicado");
+      // await AsyncStorage.removeItem("@githubSearcher:favorites"); //Limpar o AsyncStorage
+      const data = await AsyncStorage.getItem("@githubSearcher:favorites");
+      const favorites = data ? JSON.parse(data) : [];
+      if (R.hasIn(userData, favorites)) {
+        Alert.alert("usuário já favoritado");
+      } else {
+        favorites.push(userData);
+        AsyncStorage.setItem(
+          "@githubSearcher:favorites",
+          JSON.stringify(favorites)
+        );
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+    }
+  }
+
   useEffect(() => {
     getRepos();
   }, []);
@@ -44,7 +72,7 @@ export function ReposScreen() {
     <Container>
       <S.Header>
         <Title>{favoriteText}</Title>
-        <S.FavoriteButton>
+        <S.FavoriteButton onPress={saveAsyncStorage}>
           <FontAwesome name="heart" color={favoriteColor} size={24} />
         </S.FavoriteButton>
       </S.Header>

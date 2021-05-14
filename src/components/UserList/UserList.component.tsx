@@ -1,10 +1,10 @@
 import React from "react";
 import { FlatList } from "react-native";
-import { User } from "../../../../@types/User";
-import { Flex } from "../../../../components/Flex/Flex.component";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
-import { Title } from "../../../../components/Title/Title.component";
-import { UserCard } from "../../../../components/UserCard/UserCard.component";
+import { User } from "../../@types/User";
+import { Flex } from "../Flex/Flex.component";
+import { Spacer } from "../Spacer/Spacer.component";
+import { Title } from "../Title/Title.component";
+import { UserCard } from "../UserCard/UserCard.component";
 import { EmptyList } from "../EmptyList/EmptyList.component";
 
 interface UserList {
