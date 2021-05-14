@@ -1,9 +1,8 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ListAllScreen } from "../screens/ListAll/ListAll.screen";
-import { FavoriteScreen } from "../screens/Favorite/Favorite.screen";
-import { colors } from "../config/theme/colors";
+import { FavoritesScreen } from "../screens/Favorites/Favorites.screen";
+import { colors } from "../theme/colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { UserStack } from "./userStack.routes";
 
@@ -16,8 +15,8 @@ interface RouteProps {
 }
 
 const TAB_ICON = {
-  ListAll: "search",
-  Favorite: "heart",
+  Users: "search",
+  Favorites: "heart",
 };
 
 const createScreenOptions = ({ route }: RouteProps) => {
@@ -47,8 +46,8 @@ export function Routes() {
           },
         }}
       >
-        <Tab.Screen name="ListAll" component={UserStack} />
-        <Tab.Screen name="Favorite" component={FavoriteScreen} />
+        <Tab.Screen name="Users" component={UserStack} />
+        <Tab.Screen name="Favorites" component={FavoritesScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
