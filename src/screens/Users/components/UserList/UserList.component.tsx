@@ -12,7 +12,7 @@ interface UserList {
 }
 
 export default function UserList({ users }: UserList) {
-  if (users.length < 1) return <EmptyList />;
+  if (!users || users.length < 1) return <EmptyList />;
 
   return (
     <Flex>
