@@ -48,7 +48,6 @@ export function ReposScreen() {
       setLoading(false);
     } finally {
       setUserRepos(result);
-      console.log(result);
     }
   }
 

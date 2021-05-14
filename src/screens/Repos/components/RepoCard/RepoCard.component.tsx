@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../../../theme/colors";
 
 interface CardProps {
-  repo: { id: number; title: string; description: string };
+  repo: { id: number; name: string; description: string };
 }
 
 const Card = styled(TouchableOpacity)`
@@ -30,13 +30,13 @@ const Text = styled.Text`
 `;
 
 export default function RepoCard({ repo }: CardProps) {
-  const { title, description } = repo;
+  const { name, description } = repo;
   return (
     <Card>
       <FontAwesome name="folder" size={42} color={colors.blue} />
       <Spacer horizontal size={16} />
       <View>
-        <RepoTitle>{title}</RepoTitle>
+        <RepoTitle>{name}</RepoTitle>
         <Text>{description}</Text>
       </View>
     </Card>
