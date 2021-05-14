@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components/native";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import { FontAwesome } from "@expo/vector-icons";
-import { colors } from "../../../../config/theme/colors";
+import { colors } from "../../../../theme/colors";
 
 interface CardProps {
   repo: { id: number; title: string; description: string };

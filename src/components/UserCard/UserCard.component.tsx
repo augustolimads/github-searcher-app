@@ -1,43 +1,14 @@
-import React, { useEffect } from "react";
-import { TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Spacer } from "../Spacer/Spacer.component";
-import { colors } from "../../config/theme/colors";
+import { colors } from "../../theme/colors";
 import { User } from "../../@types/User";
 import { useNavigation } from "@react-navigation/core";
-
+import * as S from "./UserCard.styled";
 interface CardProps {
   userData: User;
   deleteCard?: any;
 }
-
-const Card = styled(TouchableOpacity)`
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 8px;
-  padding: 8px;
-  background-color: ${({ theme }) => theme.colors.background};
-`;
-
-const Text = styled.Text`
-  color: ${({ theme }) => theme.colors.darkGray};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
-
-const Arrow = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 50px;
-`;
-
-const Avatar = styled.Image`
-  border-radius: 8px;
-  height: 50px;
-  width: 50px;
-`;
 
 export function UserCard({ userData, deleteCard }: CardProps) {
   const navigation = useNavigation();
@@ -47,19 +18,19 @@ export function UserCard({ userData, deleteCard }: CardProps) {
   }
 
   function viewRepos() {
-    navigation.navigate("ListRepos", {
+    navigation.navigate("Repos", {
       reposUrl: userData.repos,
       username: userData.username,
     });
   }
 
   return (
-    <Card onPress={viewRepos}>
-      <Avatar source={{ uri: userData.avatar }} />
+    <S.Card onPress={viewRepos}>
+      <S.Avatar source={{ uri: userData.avatar }} />
       <Spacer horizontal size={8} />
-      <Text>{userData.username}</Text>
+      <S.Text>{userData.username}</S.Text>
       <Spacer flex={1} />
-      <Arrow onPress={() => {}}>
+      <S.Arrow onPress={() => {}}>
         {deleteCard ? (
           <FontAwesome
             name="trash"
@@ -70,7 +41,7 @@ export function UserCard({ userData, deleteCard }: CardProps) {
         ) : (
           <FontAwesome name="angle-right" size={16} color={colors.darkGray} />
         )}
-      </Arrow>
-    </Card>
+      </S.Arrow>
+    </S.Card>
   );
 }

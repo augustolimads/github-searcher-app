@@ -25,7 +25,7 @@ const FavoriteButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export function ListRepos() {
+export function ReposScreen() {
   const routes = useRoute();
   const { reposUrl, username } = routes.params;
   const [userRepos, setUserRepos] = useState([]);

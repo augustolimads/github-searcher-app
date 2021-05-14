@@ -6,12 +6,12 @@ import { Spacer } from "../../components/Spacer/Spacer.component";
 import { Flex } from "../../components/Flex/Flex.component";
 import { EmptyList } from "./components/EmptyList/EmptyList.component";
 import UserList from "./components/UserList/UserList.component";
-import { api } from "../../config/api";
+import { api } from "../../service";
 import { userRequest } from "../../service/userRequest.service";
 import { User } from "../../@types/User";
-import { colors } from "../../config/theme/colors";
+import { colors } from "../../theme/colors";
 
-export function ListAllScreen() {
+export function UsersScreen() {
   const [input, setInput] = useState("");
   const [searchedUser, setSearchedUser] = useState("");
   const [users, setUsers] = useState<User[]>([]);
