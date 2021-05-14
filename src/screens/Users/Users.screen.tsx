@@ -4,7 +4,6 @@ import { Container } from "../../components/Container/Container.component";
 import { Search } from "../../components/Search/Search.component";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import { Flex } from "../../components/Flex/Flex.component";
-import { EmptyList } from "./components/EmptyList/EmptyList.component";
 import UserList from "./components/UserList/UserList.component";
 import { api } from "../../service";
 import { userRequest } from "../../service/userRequest.service";
@@ -26,10 +25,10 @@ export function UsersScreen() {
         params: { q: searchedUser },
       });
       result = await userRequest(request);
-      setLoading(false);
     } catch (err) {
       setLoading(false);
     } finally {
+      setLoading(false);
       setUsers(result);
       console.log(result);
     }
@@ -51,13 +50,10 @@ export function UsersScreen() {
       </View>
       <Flex>
         <Spacer vertical size={20} />
-        {loading && (
+        {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
-        )}
-        {!loading && users && users.length >= 1 ? (
-          <UserList users={users} />
         ) : (
-          <EmptyList />
+          <UserList users={users} />
         )}
       </Flex>
     </Container>

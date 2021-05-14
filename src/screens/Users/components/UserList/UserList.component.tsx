@@ -5,12 +5,15 @@ import { Flex } from "../../../../components/Flex/Flex.component";
 import { Spacer } from "../../../../components/Spacer/Spacer.component";
 import { Title } from "../../../../components/Title/Title.component";
 import { UserCard } from "../../../../components/UserCard/UserCard.component";
+import { EmptyList } from "../EmptyList/EmptyList.component";
 
 interface UserList {
   users: User[];
 }
 
 export default function UserList({ users }: UserList) {
+  if (users.length < 1) return <EmptyList />;
+
   return (
     <Flex>
       <Title>Usuários encontrados</Title>
