@@ -8,7 +8,7 @@ export const SafeArea = styled.SafeAreaView`
 `;
 
 export const InvisibleButton = styled(TouchableWithoutFeedback)`
-  flex: 1;
+  height: 100%;
   width: 100%;
 `;
 

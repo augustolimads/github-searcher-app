@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Alert, Platform, Keyboard } from "react-native";
 import { Children } from "../../@types/Children";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../theme/colors";
@@ -17,7 +17,9 @@ export function Container({ children, style, ...rest }: ContainerProps) {
         <S.Header>
           <FontAwesome name="github" size={140} color={colors.darkGray} />
         </S.Header>
-        <S.Card>{children}</S.Card>
+        <S.InvisibleButton onPress={() => Keyboard.dismiss()}>
+          <S.Card>{children}</S.Card>
+        </S.InvisibleButton>
       </S.Keyboard>
     </S.SafeArea>
   );
