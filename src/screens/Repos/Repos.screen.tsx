@@ -64,7 +64,7 @@ export function ReposScreen() {
         </FavoriteButton>
       </Header>
       <Flex>
-        <Spacer vertical size={20} />
+        <Spacer vertical size={12} />
         <RepoList userRepos={userRepos} />
       </Flex>
     </Container>
