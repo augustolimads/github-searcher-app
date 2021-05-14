@@ -1,7 +1,7 @@
 import React from "react";
-import { Spacer } from "../../../../components/Spacer/Spacer.component";
+import { Spacer } from "components/Spacer/Spacer.component";
 import { FontAwesome } from "@expo/vector-icons";
-import { colors } from "../../../../theme/colors";
+import { colors } from "theme/colors";
 import * as S from "./RepoCard.styled";
 
 interface CardProps {

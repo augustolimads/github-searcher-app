@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
-import { Container } from "../../components/Container/Container.component";
-import { Search } from "../../components/Search/Search.component";
-import { Spacer } from "../../components/Spacer/Spacer.component";
-import { Flex } from "../../components/Flex/Flex.component";
+import { Container } from "components/Container/Container.component";
+import { Search } from "components/Search/Search.component";
+import { Spacer } from "components/Spacer/Spacer.component";
+import { Flex } from "components/Flex/Flex.component";
 import UserList from "./components/UserList/UserList.component";
-import { api } from "../../service";
-import { userRequest } from "../../service/userRequest.service";
+import { api } from "service";
+import { userRequest } from "service/userRequest.service";
 import { User } from "../../@types/User";
-import { colors } from "../../theme/colors";
+import { colors } from "theme/colors";
 
 export function UsersScreen() {
   const [input, setInput] = useState("");
