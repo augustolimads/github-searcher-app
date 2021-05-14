@@ -24,6 +24,10 @@ const RepoTitle = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.body};
 `;
 
+const TextBlock = styled.View`
+  flex: 1;
+`;
+
 const Text = styled.Text`
   color: ${({ theme }) => theme.colors.darkGray};
   font-size: ${({ theme }) => theme.fontSizes.caption};
@@ -35,10 +39,10 @@ export default function RepoCard({ repo }: CardProps) {
     <Card>
       <FontAwesome name="folder" size={42} color={colors.blue} />
       <Spacer horizontal size={16} />
-      <View>
+      <TextBlock>
         <RepoTitle>{name}</RepoTitle>
         <Text>{description}</Text>
-      </View>
+      </TextBlock>
     </Card>
   );
 }

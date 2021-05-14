@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { Container } from "../../components/Container/Container.component";
 import { Search } from "../../components/Search/Search.component";
@@ -37,8 +37,11 @@ export function UsersScreen() {
 
   function handleSubmit() {
     setSearchedUser(input);
-    getUsers();
   }
+
+  useEffect(() => {
+    getUsers();
+  }, [searchedUser]);
 
   return (
     <Container>
