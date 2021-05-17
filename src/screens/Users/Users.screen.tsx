@@ -30,7 +30,6 @@ export function UsersScreen() {
     } finally {
       setLoading(false);
       setUsers(result);
-      console.log(result);
     }
   }
 
