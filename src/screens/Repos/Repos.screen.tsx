@@ -15,15 +15,16 @@ import { isUserFavorited } from "../../storage/isUserFavorited.storage";
 import { deleteFavorite } from "../../storage/deleteFavorite.storage";
 import { saveFavorite } from "../../storage/saveFavorite.storage";
 import { useFavorite } from "../../contexts/FavoriteUser.context";
+import { User } from "../../@types/User";
 
 export function ReposScreen() {
   const routes = useRoute();
-  const { reposUrl, userData } = routes.params;
+  const { userData } = routes.params;
   const { loadIsFavorited, isFavorited, handleFavorited } = useFavorite();
   const [userRepos, setUserRepos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const favoriteColor = isFavorited ? "#C46683" : "gray";
+  const favoriteColor = isFavorited ? colors.red : colors.background;
 
   const favoriteText = !isFavorited
     ? `Favoritar ${userData.username} ?`
@@ -34,19 +35,19 @@ export function ReposScreen() {
     let request;
     let result;
     try {
-      request = await axios.get(reposUrl);
+      request = await axios.get(userData.repos);
       result = await repoRequest(request);
       setLoading(false);
+      setUserRepos(result);
     } catch (err) {
       setLoading(false);
     } finally {
-      setUserRepos(result);
     }
   }
 
   useEffect(() => {
     getRepos();
-  }, []);
+  }, [userData]);
 
   useEffect(() => {
     loadIsFavorited(userData);

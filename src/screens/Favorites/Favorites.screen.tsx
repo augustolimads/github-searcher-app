@@ -24,7 +24,7 @@ export function FavoritesScreen() {
       {isLoading ? (
         <ActivityIndicator size="large" color={colors.blueHighlight} />
       ) : (
-        <UserList users={favorites} />
+        <UserList users={favorites} deleteCard />
       )}
     </Container>
   );

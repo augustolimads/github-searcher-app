@@ -29,6 +29,7 @@ export const FavoriteUserProvider = ({
   const [isLoading, setIsLoading] = useState(false);
 
   async function loadFavorites() {
+    setFavorites([]);
     setIsLoading(true);
     const storageFavorites = await getFavorites();
     setFavorites(storageFavorites);
@@ -36,11 +37,13 @@ export const FavoriteUserProvider = ({
   }
 
   async function loadIsFavorited(userData: User) {
+    setIsFavorited(false);
     const favorited = await isUserFavorited(userData);
     setIsFavorited(favorited);
   }
 
   async function handleFavorited(userData: User) {
+    setIsFavorited(false);
     const favorited = await isUserFavorited(userData);
     if (favorited) {
       await deleteFavorite(userData);
