@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Spacer } from "../Spacer/Spacer.component";
-import { colors } from "../../theme/colors";
-import { User } from "../../@types/User";
+import { colors } from "theme/colors";
+import { User } from "@types/User";
 import { useNavigation } from "@react-navigation/core";
 import * as S from "./UserCard.styled";
 interface CardProps {

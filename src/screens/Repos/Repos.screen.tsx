@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "../../components/Container/Container.component";
-import { Title } from "../../components/Title/Title.component";
+import { Container } from "components/Container/Container.component";
+import { Title } from "components/Title/Title.component";
 import { FontAwesome } from "@expo/vector-icons";
-import { Flex } from "../../components/Flex/Flex.component";
-import { Spacer } from "../../components/Spacer/Spacer.component";
+import { Flex } from "components/Flex/Flex.component";
+import { Spacer } from "components/Spacer/Spacer.component";
 import { RepoList } from "./components/RepoList/RepoList.component";
 import { useRoute } from "@react-navigation/core";
 import axios from "axios";
-import { repoRequest } from "../../service/repoRequest.service";
+import { repoRequest } from "service/repoRequest.service";
 import * as S from "./Repos.styled";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { User } from "../../@types/User";
