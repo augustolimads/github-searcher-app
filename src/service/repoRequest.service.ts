@@ -3,5 +3,6 @@ export async function repoRequest(request) {
     id: item.id,
     name: item.name,
     description: item.description,
+    repoLink: item.html_url,
   }));
 }
