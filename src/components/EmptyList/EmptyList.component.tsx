@@ -7,7 +7,7 @@ import emptyListImg from "../../assets/img/Octocat.png";
 export function EmptyList() {
   return (
     <S.EmptyListFeedback>
-      <Image source={emptyListImg} style={{ height: 164, width: 164 }} />
+      <Image source={emptyListImg} style={{ height: 160, width: 160 }} />
       <Spacer vertical size={8} />
       <S.EmptyListText>
         Está meio vazio por aqui!{"\n"}Busque por um usuário

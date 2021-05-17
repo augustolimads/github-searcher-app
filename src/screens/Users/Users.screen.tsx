@@ -53,11 +53,7 @@ export function UsersScreen() {
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (
-          <Flex>
-            <Title>Usuários encontrados</Title>
-            <Spacer vertical size={8} />
-            <UserList users={users} />
-          </Flex>
+          <UserList users={users} />
         )}
       </Flex>
     </Container>
