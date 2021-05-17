@@ -5,6 +5,8 @@ import { colors } from "theme/colors";
 import { User } from "@types/User";
 import { useNavigation } from "@react-navigation/core";
 import * as S from "./UserCard.styled";
+import { useFavorite } from "../../contexts/FavoriteUser.context";
+
 interface CardProps {
   userData: User;
   deleteCard?: any;
@@ -12,16 +14,10 @@ interface CardProps {
 
 export function UserCard({ userData, deleteCard }: CardProps) {
   const navigation = useNavigation();
-
-  function handleDelete(id: number) {
-    return;
-  }
+  const { handleFavorited } = useFavorite();
 
   function viewRepos() {
-    navigation.navigate("Repos", {
-      reposUrl: userData.repos,
-      userData,
-    });
+    navigation.navigate("Repos", { userData });
   }
 
   return (
@@ -35,8 +31,8 @@ export function UserCard({ userData, deleteCard }: CardProps) {
           <FontAwesome
             name="trash"
             size={24}
-            color="red"
-            onPress={() => handleDelete(userData.id)}
+            color={colors.alert}
+            onPress={() => handleFavorited(userData)}
           />
         ) : (
           <FontAwesome name="angle-right" size={16} color={colors.darkGray} />

@@ -8,20 +8,10 @@ import { User } from "../../@types/User";
 import UserList from "../../components/UserList/UserList.component";
 import * as R from "ramda";
 import { colors } from "../../theme/colors";
-export function FavoritesScreen() {
-  const [favorites, setFavorites] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
+import { useFavorite } from "../../contexts/FavoriteUser.context";
 
-  async function loadFavorites() {
-    try {
-      const data = await AsyncStorage.getItem("@githubSearcher:favorites");
-      const dataParse = data ? JSON.parse(data) : [];
-      const uniqData = R.uniq(dataParse) as User[];
-      setFavorites(uniqData);
-    } catch (err) {
-      console.error(err);
-    }
-  }
+export function FavoritesScreen() {
+  const { loadFavorites, favorites, isLoading } = useFavorite();
 
   useEffect(() => {
     loadFavorites();
@@ -31,10 +21,10 @@ export function FavoritesScreen() {
     <Container>
       <Spacer vertical size={20} />
       <Title>Meus Favoritos</Title>
-      {loading ? (
+      {isLoading ? (
         <ActivityIndicator size="large" color={colors.blueHighlight} />
       ) : (
-        <UserList users={favorites} />
+        <UserList users={favorites} deleteCard />
       )}
     </Container>
   );

@@ -9,6 +9,7 @@ import { userRequest } from "../../service/userRequest.service";
 import { User } from "../../@types/User";
 import { colors } from "../../theme/colors";
 import UserList from "../../components/UserList/UserList.component";
+import { Title } from "../../components/Title/Title.component";
 
 export function UsersScreen() {
   const [input, setInput] = useState("");
@@ -30,7 +31,6 @@ export function UsersScreen() {
     } finally {
       setLoading(false);
       setUsers(result);
-      console.log(result);
     }
   }
 
@@ -53,7 +53,11 @@ export function UsersScreen() {
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (
-          <UserList users={users} />
+          <Flex>
+            <Title>Usuários encontrados</Title>
+            <Spacer vertical size={8} />
+            <UserList users={users} />
+          </Flex>
         )}
       </Flex>
     </Container>

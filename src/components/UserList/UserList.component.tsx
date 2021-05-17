@@ -9,24 +9,21 @@ import { EmptyList } from "../EmptyList/EmptyList.component";
 
 interface UserList {
   users: User[];
+  deleteCard?: any;
 }
 
-export default function UserList({ users }: UserList) {
+export default function UserList({ users, deleteCard }: UserList) {
   if (!users || users.length < 1) return <EmptyList />;
 
   return (
-    <Flex>
-      <Title>Usuários encontrados</Title>
-      <Spacer vertical size={8} />
-      <FlatList
-        data={users}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={(userData) => (
-          <Spacer vertical size={8}>
-            <UserCard userData={userData.item} />
-          </Spacer>
-        )}
-      />
-    </Flex>
+    <FlatList
+      data={users}
+      keyExtractor={(item) => String(item.id)}
+      renderItem={(userData) => (
+        <Spacer vertical size={8}>
+          <UserCard userData={userData.item} deleteCard={deleteCard} />
+        </Spacer>
+      )}
+    />
   );
 }
