@@ -5,7 +5,9 @@ import { getFavorites } from "./getFavorites.storage";
 export async function deleteFavorite(userData: User) {
   const favorites = await getFavorites();
 
-  const filteredFavorites = favorites.filter(({ id }) => id !== userData.id);
+  const filteredFavorites = favorites.filter(
+    ({ id }: User) => id !== userData.id
+  );
   AsyncStorage.setItem(
     "@githubSearcher:favorites",
     JSON.stringify(filteredFavorites)

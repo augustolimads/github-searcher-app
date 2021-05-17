@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
-import { colors } from "theme/colors";
-import { Spacer } from "components/Spacer/Spacer.component";
+import { colors } from "../../theme/colors";
+import { Spacer } from "../../components/Spacer/Spacer.component";
 import * as S from "./Search.styled";
 
 interface SearchProps {

@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { UsersScreen } from "screens/Users/Users.screen";
-import { ReposScreen } from "screens/Repos/Repos.screen";
+import { UsersScreen } from "../screens/Users/Users.screen";
+import { ReposScreen } from "../screens/Repos/Repos.screen";
 
 const Stack = createStackNavigator();
 

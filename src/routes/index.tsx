@@ -1,8 +1,8 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FavoritesScreen } from "screens/Favorites/Favorites.screen";
-import { colors } from "theme/colors";
+import { FavoritesScreen } from "../screens/Favorites/Favorites.screen";
+import { colors } from "../theme/colors";
 import { FontAwesome } from "@expo/vector-icons";
 import { UserStack } from "./userStack.routes";
 
