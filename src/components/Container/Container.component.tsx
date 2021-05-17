@@ -12,15 +12,15 @@ type ContainerProps = {
 
 export function Container({ children, style, ...rest }: ContainerProps) {
   return (
-    <S.SafeArea {...rest}>
-      <S.Keyboard behavior={Platform.OS === "ios" ? "padding" : "height"}>
-        <S.Header>
-          <FontAwesome name="github" size={140} color={colors.darkGray} />
-        </S.Header>
-        <S.InvisibleButton onPress={() => Keyboard.dismiss()}>
+    <S.InvisibleButton onPress={() => Keyboard.dismiss()}>
+      <S.SafeArea {...rest}>
+        <S.Keyboard behavior={Platform.OS === "ios" ? "padding" : "height"}>
+          <S.Header>
+            <FontAwesome name="github" size={140} color={colors.darkGray} />
+          </S.Header>
           <S.Card>{children}</S.Card>
-        </S.InvisibleButton>
-      </S.Keyboard>
-    </S.SafeArea>
+        </S.Keyboard>
+      </S.SafeArea>
+    </S.InvisibleButton>
   );
 }
