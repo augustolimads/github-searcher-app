@@ -8,6 +8,7 @@ import { User } from "../../@types/User";
 import UserList from "../../components/UserList/UserList.component";
 import { colors } from "../../theme/colors";
 import { useFavorite } from "../../contexts/FavoriteUser.context";
+import { getFavorites } from "../../storage/getFavorites.storage";
 
 export function FavoritesScreen() {
   const { loadFavorites, favorites, isLoading } = useFavorite();

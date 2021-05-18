@@ -11,9 +11,6 @@ import axios from "axios";
 import { repoRequest } from "../../service/repoRequest.service";
 import * as S from "./Repos.styled";
 import { colors } from "../../theme/colors";
-import { isUserFavorited } from "../../storage/isUserFavorited.storage";
-import { deleteFavorite } from "../../storage/deleteFavorite.storage";
-import { saveFavorite } from "../../storage/saveFavorite.storage";
 import { useFavorite } from "../../contexts/FavoriteUser.context";
 import { User } from "../../@types/User";
 
@@ -51,7 +48,7 @@ export function ReposScreen() {
 
   useEffect(() => {
     loadIsFavorited(userData);
-  }, []);
+  }, [isFavorited, userData]);
 
   return (
     <Container>

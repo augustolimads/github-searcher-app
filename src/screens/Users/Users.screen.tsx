@@ -9,7 +9,6 @@ import { userRequest } from "../../service/userRequest.service";
 import { User } from "../../@types/User";
 import { colors } from "../../theme/colors";
 import UserList from "../../components/UserList/UserList.component";
-import { Title } from "../../components/Title/Title.component";
 
 export function UsersScreen() {
   const [input, setInput] = useState("");
