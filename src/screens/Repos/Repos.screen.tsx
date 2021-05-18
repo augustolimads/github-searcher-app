@@ -18,8 +18,10 @@ export function ReposScreen() {
   const routes = useRoute();
   const { userData } = routes.params;
   const { loadIsFavorited, isFavorited, handleFavorited } = useFavorite();
-  const [userRepos, setUserRepos] = useState([]);
+  const [userRepos, setUserRepos] = useState<object[]>([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   const favoriteColor = isFavorited ? colors.red : colors.background;
 
@@ -28,18 +30,32 @@ export function ReposScreen() {
     : userData.username;
 
   async function getRepos() {
-    setLoading(true);
     let request;
     let result;
     try {
-      request = await axios.get(userData.repos);
+      request = await axios.get(userData.repos, {
+        params: { per_page: 8, page },
+      });
       result = await repoRequest(request);
-      setLoading(false);
-      setUserRepos(result);
+      if (!result) return setLoading(true);
     } catch (err) {
       setLoading(false);
     } finally {
+      if (page > 1) {
+        setUserRepos((oldValue) => [...oldValue, ...result]);
+      } else {
+        setUserRepos(result);
+      }
+      setLoading(false);
+      setLoadingMore(false);
     }
+  }
+
+  function getMoreRepos(distance: number) {
+    if (distance < 1) return;
+    setLoadingMore(true);
+    setPage((oldValue) => oldValue + 1);
+    getRepos();
   }
 
   useEffect(() => {
@@ -63,7 +79,11 @@ export function ReposScreen() {
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (
-          <RepoList userRepos={userRepos} />
+          <RepoList
+            userRepos={userRepos}
+            loadingMore={loadingMore}
+            getMoreRepos={getMoreRepos}
+          />
         )}
       </Flex>
     </Container>

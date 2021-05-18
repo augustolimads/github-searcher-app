@@ -15,26 +15,43 @@ export function UsersScreen() {
   const [searchedUser, setSearchedUser] = useState("");
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   async function getUsers() {
-    setLoading(true);
     let request;
     let result;
     try {
       request = await api.get("search/users", {
-        params: { q: searchedUser },
+        params: { q: searchedUser, per_page: 8, page },
       });
       result = await userRequest(request);
+      if (!result) return setLoading(true);
     } catch (err) {
       setLoading(false);
     } finally {
+      if (page > 1) {
+        setUsers((oldValue) => [...oldValue, ...result]);
+      } else {
+        setUsers(result);
+      }
       setLoading(false);
-      setUsers(result);
+      setLoadingMore(false);
     }
+  }
+
+  function getMoreUsers(distance: number) {
+    if (distance < 1) return;
+
+    setLoadingMore(true);
+    setPage((oldValue) => oldValue + 1);
+    getUsers();
   }
 
   function handleSubmit() {
     setSearchedUser(input);
+    setPage(1);
+    setUsers([]);
   }
 
   useEffect(() => {
@@ -52,7 +69,11 @@ export function UsersScreen() {
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (
-          <UserList users={users} />
+          <UserList
+            users={users}
+            loadingMore={loadingMore}
+            getMoreUsers={getMoreUsers}
+          />
         )}
       </Flex>
     </Container>

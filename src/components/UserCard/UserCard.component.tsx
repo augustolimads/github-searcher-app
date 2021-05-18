@@ -14,7 +14,7 @@ interface CardProps {
 
 export function UserCard({ userData, deleteCard }: CardProps) {
   const navigation = useNavigation();
-  const { handleFavorited } = useFavorite();
+  const { handleDeleteFavorite } = useFavorite();
 
   function viewRepos() {
     navigation.navigate("Repos", { userData });
@@ -32,7 +32,7 @@ export function UserCard({ userData, deleteCard }: CardProps) {
             name="trash"
             size={24}
             color={colors.alert}
-            onPress={() => handleFavorited(userData)}
+            onPress={() => handleDeleteFavorite(userData)}
           />
         ) : (
           <FontAwesome name="angle-right" size={16} color={colors.darkGray} />

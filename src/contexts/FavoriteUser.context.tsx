@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { Alert } from "react-native";
 import { Children } from "../@types/Children";
 import { User } from "../@types/User";
 import { deleteFavorite } from "../storage/deleteFavorite.storage";
@@ -17,6 +18,7 @@ interface FavoriteUserContextProps {
   isFavorited: boolean;
   isLoading: boolean;
   handleFavorited: any;
+  handleDeleteFavorite: any;
 }
 
 export const FavoriteUSerContext = createContext({});
@@ -29,10 +31,8 @@ export const FavoriteUserProvider = ({
   const [isLoading, setIsLoading] = useState(false);
 
   async function loadFavorites() {
-    setIsLoading(true);
     const storageFavorites = await getFavorites();
     setFavorites(storageFavorites);
-    setIsLoading(false);
   }
 
   async function loadIsFavorited(userData: User) {
@@ -52,6 +52,20 @@ export const FavoriteUserProvider = ({
     await loadFavorites();
   }
 
+  async function handleDeleteFavorite(userData: User) {
+    Alert.alert("Remover", `Deseja remover ${userData.username}?`, [
+      { text: "Não 🙏", style: "cancel" },
+      {
+        text: "Sim 😢",
+        onPress: async () => {
+          await deleteFavorite(userData);
+          setIsFavorited(false);
+          await loadFavorites();
+        },
+      },
+    ]);
+  }
+
   return (
     <FavoriteUSerContext.Provider
       value={{
@@ -61,6 +75,7 @@ export const FavoriteUserProvider = ({
         isFavorited,
         isLoading,
         handleFavorited,
+        handleDeleteFavorite,
       }}
     >
       {children}
@@ -76,6 +91,7 @@ export const useFavorite = () => {
     isFavorited,
     isLoading,
     handleFavorited,
+    handleDeleteFavorite,
   } = useContext(FavoriteUSerContext) as FavoriteUserContextProps;
   return {
     loadFavorites,
@@ -84,5 +100,6 @@ export const useFavorite = () => {
     isFavorited,
     isLoading,
     handleFavorited,
+    handleDeleteFavorite,
   };
 };

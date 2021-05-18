@@ -4,13 +4,17 @@ import { Spacer } from "../Spacer/Spacer.component";
 import * as S from "./EmptyList.styled";
 import emptyListImg from "../../assets/img/Octocat.png";
 
-export function EmptyList() {
+interface EmptyListProps {
+  text?: string;
+}
+
+export function EmptyList({ text }: EmptyListProps) {
   return (
     <S.EmptyListFeedback>
       <Image source={emptyListImg} style={{ height: 160, width: 160 }} />
       <Spacer vertical size={8} />
       <S.EmptyListText>
-        Está meio vazio por aqui!{"\n"}Busque por um usuário
+        {text ? text : "Está meio vazio por aqui!\nBusque por um usuário"}
       </S.EmptyListText>
     </S.EmptyListFeedback>
   );

@@ -1,18 +1,26 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { ActivityIndicator, FlatList } from "react-native";
 import { User } from "../../@types/User";
 import { Flex } from "../Flex/Flex.component";
 import { Spacer } from "../Spacer/Spacer.component";
 import { Title } from "../Title/Title.component";
 import { UserCard } from "../UserCard/UserCard.component";
 import { EmptyList } from "../EmptyList/EmptyList.component";
+import { colors } from "../../theme/colors";
 
-interface UserList {
+interface UserListProps {
   users: User[];
   deleteCard?: any;
+  loadingMore?: boolean;
+  getMoreUsers?: any;
 }
 
-export default function UserList({ users, deleteCard }: UserList) {
+export default function UserList({
+  users,
+  deleteCard,
+  loadingMore,
+  getMoreUsers,
+}: UserListProps) {
   if (!users || users.length < 1) return <EmptyList />;
 
   return (
@@ -31,6 +39,17 @@ export default function UserList({ users, deleteCard }: UserList) {
             <UserCard userData={userData.item} deleteCard={deleteCard} />
           </Spacer>
         )}
+        onEndReachedThreshold={0.1}
+        onEndReached={({ distanceFromEnd }) =>
+          getMoreUsers && getMoreUsers(distanceFromEnd)
+        }
+        ListFooterComponent={
+          loadingMore ? (
+            <ActivityIndicator color={colors.blueHighlight} />
+          ) : (
+            <></>
+          )
+        }
       />
     </Flex>
   );
