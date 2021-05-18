@@ -12,7 +12,7 @@ interface EmptyListProps {
 export function EmptyList({ text }: EmptyListProps) {
   const [keyboardIsShow, setKeyboardIsShow] = useState(false);
   useEffect(() => {
-    Keyboard.addListener("keyboardWillShow", () => {
+    Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardIsShow(true);
     });
     Keyboard.addListener("keyboardDidHide", () => {
