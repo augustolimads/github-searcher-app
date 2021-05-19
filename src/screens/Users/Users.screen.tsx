@@ -61,15 +61,6 @@ export function UsersScreen() {
     getUsers();
   }, [searchedUser]);
 
-  useEffect(() => {
-    console.log({
-      input,
-      searchedUser,
-      page,
-      users,
-    });
-  }, [input, searchedUser, page, users]);
-
   return (
     <Container>
       <View>
