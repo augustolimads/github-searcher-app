@@ -8,9 +8,9 @@ import { FavoriteUserProvider } from "./src/contexts/FavoriteUser.context";
 export default function App() {
   return (
     <>
+      <StatusBar style="light" translucent />
       <ThemeProvider theme={theme}>
         <FavoriteUserProvider>
-          <StatusBar style="light" translucent />
           <Routes />
         </FavoriteUserProvider>
       </ThemeProvider>
