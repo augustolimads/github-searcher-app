@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../theme/colors";
 import { Spacer } from "../../components/Spacer/Spacer.component";
@@ -12,10 +12,6 @@ interface SearchProps {
 }
 
 export function Search({ value, setValue, handleSubmit }: SearchProps) {
-  useEffect(() => {
-    setValue("");
-  }, []);
-
   return (
     <S.SearchWrapper>
       <S.InputWrapper>
