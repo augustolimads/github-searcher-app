@@ -20,7 +20,7 @@ export function UsersScreen() {
 
   async function getUsers() {
     let request;
-    let result;
+    let result: any[];
     try {
       request = await api.get("search/users", {
         params: { q: searchedUser, per_page: 8, page },
@@ -53,17 +53,22 @@ export function UsersScreen() {
       setLoading(true);
       setSearchedUser(input);
       setPage(1);
-      setInput("");
       setUsers([]);
-    } else {
-      return;
     }
-    getUsers();
   }
 
   useEffect(() => {
     getUsers();
   }, [searchedUser]);
+
+  useEffect(() => {
+    console.log({
+      input,
+      searchedUser,
+      page,
+      users,
+    });
+  }, [input, searchedUser, page, users]);
 
   return (
     <Container>
