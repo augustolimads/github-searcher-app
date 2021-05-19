@@ -3,7 +3,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import { colors } from "../../theme/colors";
 import { Spacer } from "../../components/Spacer/Spacer.component";
 import * as S from "./Search.styled";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface SearchProps {
   value: string;
@@ -19,6 +18,7 @@ export function Search({ value, setValue, handleSubmit }: SearchProps) {
           placeholder="Buscar usuário"
           value={value}
           onChangeText={setValue}
+          onSubmitEditing={handleSubmit}
         />
         {Boolean(value) && (
           <S.ClearButton onPress={() => setValue("")}>
