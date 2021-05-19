@@ -4,7 +4,7 @@ import { User } from "../../@types/User";
 import { Flex } from "../Flex/Flex.component";
 import { Spacer } from "../Spacer/Spacer.component";
 import { Title } from "../Title/Title.component";
-import { UserCard } from "../UserCard/UserCard.component";
+import UserCard from "../UserCard/UserCard.component";
 import { EmptyList } from "../EmptyList/EmptyList.component";
 import { colors } from "../../theme/colors";
 
@@ -40,9 +40,7 @@ export default function UserList({
           </Spacer>
         )}
         onEndReachedThreshold={0.1}
-        onEndReached={({ distanceFromEnd }) =>
-          getMoreUsers && getMoreUsers(distanceFromEnd)
-        }
+        onEndReached={({ distanceFromEnd }) => getMoreUsers(distanceFromEnd)}
         ListFooterComponent={
           loadingMore ? (
             <ActivityIndicator color={colors.blueHighlight} />

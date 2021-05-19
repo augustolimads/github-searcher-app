@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Spacer } from "../Spacer/Spacer.component";
 import { colors } from "../../theme/colors";
@@ -12,7 +12,7 @@ interface CardProps {
   deleteCard?: any;
 }
 
-export function UserCard({ userData, deleteCard }: CardProps) {
+function UserCard({ userData, deleteCard }: CardProps) {
   const navigation = useNavigation();
   const { handleDeleteFavorite } = useFavorite();
 
@@ -41,3 +41,5 @@ export function UserCard({ userData, deleteCard }: CardProps) {
     </S.Card>
   );
 }
+
+export default memo(UserCard);
