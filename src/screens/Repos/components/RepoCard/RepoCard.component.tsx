@@ -9,7 +9,7 @@ interface CardProps {
   repo: { id: number; name: string; description: string; repoLink: string };
 }
 
-export default function RepoCard({ repo }: CardProps) {
+function RepoCard({ repo }: CardProps) {
   const { name, description, repoLink } = repo;
   return (
     <S.Card onPress={() => Linking.openURL(repoLink)}>
@@ -22,3 +22,5 @@ export default function RepoCard({ repo }: CardProps) {
     </S.Card>
   );
 }
+
+export default RepoCard;

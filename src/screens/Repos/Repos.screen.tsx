@@ -14,9 +14,13 @@ import { colors } from "../../theme/colors";
 import { useFavorite } from "../../contexts/FavoriteUser.context";
 import { User } from "../../@types/User";
 
+interface RoutesparamsProps {
+  userData: User;
+}
+
 export function ReposScreen() {
   const routes = useRoute();
-  const { userData } = routes.params;
+  const { userData } = routes.params as RoutesparamsProps;
   const { loadIsFavorited, isFavorited, handleFavorited } = useFavorite();
   const [userRepos, setUserRepos] = useState<object[]>([]);
   const [loading, setLoading] = useState(false);
@@ -32,6 +36,7 @@ export function ReposScreen() {
   async function getRepos() {
     let request;
     let result;
+
     try {
       request = await axios.get(userData.repos, {
         params: { per_page: 8, page },

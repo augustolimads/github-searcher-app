@@ -31,7 +31,9 @@ export function RepoList({
           </Spacer>
         )}
         onEndReachedThreshold={0.1}
-        onEndReached={({ distanceFromEnd }) => getMoreRepos(distanceFromEnd)}
+        onEndReached={({ distanceFromEnd }) =>
+          getMoreRepos && getMoreRepos(distanceFromEnd)
+        }
         ListFooterComponent={
           loadingMore ? (
             <ActivityIndicator color={colors.blueHighlight} />

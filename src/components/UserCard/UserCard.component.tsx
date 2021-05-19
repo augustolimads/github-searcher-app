@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { Spacer } from "../Spacer/Spacer.component";
 import { colors } from "../../theme/colors";
@@ -42,4 +42,4 @@ function UserCard({ userData, deleteCard }: CardProps) {
   );
 }
 
-export default memo(UserCard);
+export default UserCard;

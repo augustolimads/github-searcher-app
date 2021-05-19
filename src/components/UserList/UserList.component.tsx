@@ -40,7 +40,9 @@ export default function UserList({
           </Spacer>
         )}
         onEndReachedThreshold={0.1}
-        onEndReached={({ distanceFromEnd }) => getMoreUsers(distanceFromEnd)}
+        onEndReached={({ distanceFromEnd }) =>
+          getMoreUsers && getMoreUsers(distanceFromEnd)
+        }
         ListFooterComponent={
           loadingMore ? (
             <ActivityIndicator color={colors.blueHighlight} />
