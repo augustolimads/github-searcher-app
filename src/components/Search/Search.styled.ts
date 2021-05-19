@@ -5,12 +5,19 @@ export const SearchWrapper = styled.View`
   flex-direction: row;
 `;
 
-export const Input = styled.TextInput`
-  padding: 10px;
+export const InputWrapper = styled.View`
+  flex-direction: row;
+  flex: 1;
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.darkGray};
-  flex: 1;
   border-radius: 8px;
+  align-items: center;
+  padding-right: 10px;
+`;
+
+export const Input = styled.TextInput`
+  padding: 10px;
+  flex: 1;
 `;
 
 export const ButtonSearch = styled(RectButton)`
