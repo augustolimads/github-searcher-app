@@ -21,9 +21,9 @@ export function Search({ value, setValue, handleSubmit }: SearchProps) {
           onChangeText={setValue}
         />
         {Boolean(value) && (
-          <TouchableOpacity onPress={() => setValue("")}>
+          <S.ClearButton onPress={() => setValue("")}>
             <FontAwesome name="close" size={16} />
-          </TouchableOpacity>
+          </S.ClearButton>
         )}
       </S.InputWrapper>
       <Spacer size={4} />

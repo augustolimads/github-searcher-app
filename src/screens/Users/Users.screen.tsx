@@ -27,14 +27,14 @@ export function UsersScreen() {
       });
       result = await userRequest(request);
       if (!result) return setLoading(true);
-    } catch (err) {
-      setLoading(false);
-    } finally {
       if (page > 1) {
         setUsers((oldValue) => [...oldValue, ...result]);
       } else {
         setUsers(result);
       }
+    } catch (err) {
+      setLoading(false);
+    } finally {
       setLoading(false);
       setLoadingMore(false);
     }
@@ -49,9 +49,16 @@ export function UsersScreen() {
   }
 
   function handleSubmit() {
-    setSearchedUser(input);
-    setPage(1);
-    setUsers([]);
+    if (input !== searchedUser) {
+      setLoading(true);
+      setSearchedUser(input);
+      setPage(1);
+      setInput("");
+      setUsers([]);
+    } else {
+      return;
+    }
+    getUsers();
   }
 
   useEffect(() => {
