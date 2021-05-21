@@ -18,7 +18,7 @@ export function FavoritesScreen() {
 
   return (
     <Container>
-      <Spacer vertical size={20} />
+      <Spacer size={20} />
       <Title>Meus Favoritos</Title>
       {isLoading ? (
         <ActivityIndicator size="large" color={colors.blueHighlight} />

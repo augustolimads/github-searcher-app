@@ -80,7 +80,7 @@ export function ReposScreen() {
         </S.FavoriteButton>
       </S.Header>
       <Flex>
-        <Spacer vertical size={12} />
+        <Spacer size={12} />
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (

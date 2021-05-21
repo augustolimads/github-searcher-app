@@ -17,7 +17,7 @@ export function EmptyList({ text }: EmptyListProps) {
         style={{ height: mediaQuery(0.4), width: mediaQuery(0.4) }}
       />
 
-      <Spacer vertical size={8} />
+      <Spacer size={8} />
       <S.EmptyListText>
         {text ? text : "Está meio vazio por aqui!\nBusque por um usuário"}
       </S.EmptyListText>

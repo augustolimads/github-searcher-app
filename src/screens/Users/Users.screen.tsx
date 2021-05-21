@@ -64,11 +64,11 @@ export function UsersScreen() {
   return (
     <Container>
       <View>
-        <Spacer vertical size={20} />
+        <Spacer size={20} />
         <Search value={input} setValue={setInput} handleSubmit={handleSubmit} />
       </View>
       <Flex>
-        <Spacer vertical size={20} />
+        <Spacer size={20} />
         {loading ? (
           <ActivityIndicator size="large" color={colors.blueHighlight} />
         ) : (

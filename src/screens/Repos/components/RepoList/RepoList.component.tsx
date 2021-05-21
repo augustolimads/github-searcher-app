@@ -26,7 +26,7 @@ export function RepoList({
         data={userRepos}
         keyExtractor={(item) => String(item.id)}
         renderItem={(repo) => (
-          <Spacer vertical size={8}>
+          <Spacer size={8}>
             <RepoCard repo={repo.item} />
           </Spacer>
         )}

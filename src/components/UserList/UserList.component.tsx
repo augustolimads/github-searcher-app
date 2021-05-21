@@ -28,14 +28,14 @@ export default function UserList({
       {!deleteCard && (
         <>
           <Title>Usuários encontrados</Title>
-          <Spacer vertical size={8} />
+          <Spacer size={8} />
         </>
       )}
       <FlatList
         data={users}
         keyExtractor={(item) => String(item.id)}
         renderItem={(userData) => (
-          <Spacer vertical size={8}>
+          <Spacer size={8}>
             <UserCard userData={userData.item} deleteCard={deleteCard} />
           </Spacer>
         )}

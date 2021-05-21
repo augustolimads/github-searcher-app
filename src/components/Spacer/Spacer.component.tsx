@@ -16,16 +16,10 @@ const SpacerStyle = styled.View<SpacerProps>`
   flex: ${({ flex }) => (flex ? flex : "none")};
 `;
 
-export function Spacer({
-  size,
-  horizontal,
-  vertical,
-  flex,
-  children,
-}: SpacerProps) {
+export function Spacer({ size, horizontal, flex, children }: SpacerProps) {
   const sizeVertical = `${size + "px"} 0`;
   const sizeHorizontal = `0 ${size + "px"}`;
-  const margin = vertical ? sizeVertical : sizeHorizontal;
+  const margin = horizontal ? sizeHorizontal : sizeVertical;
   return (
     <SpacerStyle marginResult={size ? margin : "0"} flex={flex}>
       {children}

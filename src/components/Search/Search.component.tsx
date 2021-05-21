@@ -26,7 +26,7 @@ export function Search({ value, setValue, handleSubmit }: SearchProps) {
           </S.ClearButton>
         )}
       </S.InputWrapper>
-      <Spacer size={4} />
+      <Spacer horizontal size={4} />
       <S.ButtonSearch onPress={handleSubmit}>
         <FontAwesome name="search" size={28} color={colors.background} />
       </S.ButtonSearch>
