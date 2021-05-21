@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Alert } from "react-native";
 import { Children } from "../@types/Children";
 import { User } from "../@types/User";
@@ -30,10 +36,10 @@ export const FavoriteUserProvider = ({
   const [isFavorited, setIsFavorited] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function loadFavorites() {
+  const loadFavorites = useCallback(async () => {
     const storageFavorites = await getFavorites();
     setFavorites(storageFavorites);
-  }
+  }, []);
 
   async function loadIsFavorited(userData: User) {
     const favorited = await isUserFavorited(userData);
@@ -66,10 +72,13 @@ export const FavoriteUserProvider = ({
     ]);
   }
 
+  useEffect(() => {
+    loadFavorites();
+  }, [loadFavorites]);
+
   return (
     <FavoriteUSerContext.Provider
       value={{
-        loadFavorites,
         favorites,
         loadIsFavorited,
         isFavorited,
@@ -85,7 +94,6 @@ export const FavoriteUserProvider = ({
 
 export const useFavorite = () => {
   const {
-    loadFavorites,
     favorites,
     loadIsFavorited,
     isFavorited,
@@ -94,7 +102,6 @@ export const useFavorite = () => {
     handleDeleteFavorite,
   } = useContext(FavoriteUSerContext) as FavoriteUserContextProps;
   return {
-    loadFavorites,
     favorites,
     loadIsFavorited,
     isFavorited,

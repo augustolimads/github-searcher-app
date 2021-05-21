@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ActivityIndicator } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Container } from "../../components/Container/Container.component";
@@ -10,11 +10,7 @@ import { colors } from "../../theme/colors";
 import { useFavorite } from "../../contexts/FavoriteUser.context";
 
 export function FavoritesScreen() {
-  const { loadFavorites, favorites, isLoading } = useFavorite();
-
-  useEffect(() => {
-    loadFavorites();
-  }, []);
+  const { favorites, isLoading } = useFavorite();
 
   return (
     <Container>
