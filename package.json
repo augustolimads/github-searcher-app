@@ -8,7 +8,8 @@
     "eject": "expo eject",
     "lint": "eslint .  --ext .js,.jsx,.ts,.tsx",
     "publish": "expo publish",
-    "build": "expo build:android -t apk"
+    "build": "expo build:android -t apk",
+    "bundle": "expo build:android -t app-bundle"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.4",
